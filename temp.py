@@ -45,9 +45,10 @@ def photon_counts_from_FITS(imgs, bands='grz', mn=0.1, mx=100.):
         img_scaled[plane, :, :] = nMgys #nMgys is (x, x) in shape
         #if band == 'z': 
         #    scaled_data.append(img)
-
+    
+    clipped_img = np.clip(imgs, 1e-10, None)
         
-    return imgs, img_counts, img_scaled
+    return clipped_img, img_counts, img_scaled
 
 def asinh_mag(img, soft_param):
     """
